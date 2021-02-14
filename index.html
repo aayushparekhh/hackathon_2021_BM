@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- font awesome cdn here-->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+
+    <!--GSAP CDN HERE HERE-->
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.0/gsap.min.js"
+      defer
+    ></script>
+    <script src="./index.js" defer></script>
+    <!--EXTERNAL CSS HERE-->
+    <link rel="stylesheet" href="./index.css" />
+    <!--GOOGLE FONTS CDN HERE-->
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,200;1,300;1,400;1,500;1,600;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <!--  ADD A FAVICONE-->
+    <title>Bit's Magnet</title>
+  </head>
+  <body>
+    <!--PRELOADER HERE-->
+    <div class="loader">
+      <div class="color-animator">
+        <div><h1 class="loader-text-one">Bit's Magnet</h1></div>
+        <div><h1 class="loader-text-two">Hackathon 2021</h1></div>
+      </div>
+    </div>
+    <!--RESPONSIVE NAVBAR HERE-->
+    <nav>
+      <div class="title">
+        <a href="#">
+          <h1 data-tilt>Bit's Magnet</h1>
+        </a>
+      </div>
+      <div class="nav-elmns">
+        <ul class="nav-links">
+          <li data-tilt>
+            <a href="#">Algorithm</a>
+          </li>
+          <li data-tilt>
+            <a href="#">About Us</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <!--HEADER HTML HERE-->
+    <header>
+      <div class="chatbot-container">
+        <div class="chats-display-container">
+          <div class="sever-msg-dp">
+            <div class="server-message">asd</div>
+          </div>
+          <div class="user-msg-dp">
+            <!--<div class="user-message"></div> -->
+          </div>
+        </div>
+        <div class="user_input" required="true" autocomplete="off">
+          <form>
+            <input
+              type="text"
+              placeholder="chat here"
+              id="user-message"
+              autocomplete="off"
+            />
+            <button type="submit">
+              <i
+                type="submit"
+                class="fa fa-paper-plane"
+                id="send-icon"
+                data-tilt
+                aria-hidden="true"
+              ></i>
+            </button>
+          </form>
+        </div>
+      </div>
+    </header>
+    <!--FOOTER HTML HERE-->
+    <footer><h1>Made with &#9825; by Bit's magnet</h1></footer>
+  </body>
+  <!--SCRIPTS HERE-->
+  <script src="./vanilla-tilt.js"></script>
+</html>

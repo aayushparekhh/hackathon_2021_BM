@@ -1,0 +1,256 @@
+/*
+***************
+UNIVERSAL CSS HERE
+***************
+*/
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html {
+  height: 100%;
+}
+.loader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.color-animator {
+  width: 50%;
+  height: 50%;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
+    url("./images/bkg.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.loader h1 {
+  -webkit-text-fill-color: transparent; /* Will override color (regardless of order) */
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: white;
+  font-size: 3rem;
+  text-transform: capitalize;
+  color: white;
+  padding: 1em;
+}
+
+/* removing the loader class*/
+.remove-loader {
+  animation: vanish 1s forwards;
+}
+@keyframes vanish {
+  100% {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+body {
+  font-family: "Poppins", sans-serif;
+  display: flex;
+  flex-direction: column;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
+    url("./images/bkg.jpg");
+  /* Full height */
+  height: 100%;
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+/*
+***************
+NAVBAR CSS HERE
+***************
+*/
+nav {
+  margin: 0 auto;
+  width: 95%;
+  height: 10vh;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.title a {
+  -webkit-text-fill-color: transparent; /* Will override color (regardless of order) */
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: white;
+  text-decoration: none;
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: 5px;
+}
+.nav-elmns {
+  width: 30%;
+}
+.nav-links {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.nav-links li {
+  list-style: none;
+  transition: 0.3s ease-in-out;
+  cursor: pointer;
+}
+.nav-links a {
+  -webkit-text-fill-color: transparent; /* Will override color (regardless of order) */
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: white;
+  text-transform: capitalize;
+  letter-spacing: 2px;
+  font-size: 1.3rem;
+  text-decoration: none;
+  font-weight: bolder;
+  color: white;
+  transition: 0.3s ease-in-out;
+}
+/* adding hover effects */
+.nav-links li:hover {
+  background-image: url("./images/bkg.jpg");
+  background-position: center;
+  background-size: cover;
+  border-radius: 4px;
+}
+.nav-links a:hover {
+  -webkit-text-fill-color: white; /* Will override color (regardless of order) */
+  -webkit-text-stroke-width: 0px;
+}
+/*
+***************
+HEADER CSS HERE
+***************
+*/
+.chatbot-container {
+  display: flex;
+  flex-direction: column;
+  opacity: 0;
+  border-radius: 20px;
+  margin: 2em auto;
+  width: 40%;
+  height: 60vh;
+  background-color: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(5px);
+}
+.display {
+  opacity: 1;
+}
+input:focus {
+  outline: none;
+}
+
+.user_input form input {
+  font-size: 1.5rem;
+  color: white;
+  width: 70%;
+  text-transform: capitalize;
+  padding: 1em;
+  background-color: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(5px);
+  border-radius: 20px;
+  height: 5vh;
+  border: 0px solid transparent;
+}
+.user_input {
+  border: 2px solid red;
+  width: 70%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  margin: 1em auto;
+  margin-top: auto;
+}
+#send-icon {
+  font-size: 2rem;
+  color: white;
+}
+.user_input form {
+  display: flex;
+  justify-content: space-evenly;
+}
+.user_input button {
+  cursor: pointer;
+  background-color: transparent;
+  border: 0px solid transparent;
+  transition: 0.2s ease-in-out;
+}
+.user_input button:hover {
+  transform: scale(1.2);
+}
+button:focus {
+  outline: none;
+}
+.chats-display-container {
+  overflow: auto;
+  width: 100%;
+  margin: 2em auto;
+  border: 2px solid red;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  overflow-x: hidden;
+}
+.sever-msg-dp {
+  border: 2px solid green;
+  height: 40vh;
+  width: 45%;
+}
+.user-msg-dp {
+  border: 2px solid yellow;
+  height: 40vh;
+  width: 45%;
+}
+.server-message {
+  width: 20%;
+  background-image: url("./images/bkg.jpg");
+}
+.user-message {
+  margin: 0 auto;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+  border: 2px solid red;
+}
+
+#user-icon {
+  color: #4842cf;
+  font-size: 2rem;
+}
+.user-msg-dp h4 {
+  padding: 0.5em;
+  margin: 1em;
+  border-radius: 10px;
+  text-transform: capitalize;
+  color: white;
+  background-color: #4842cf;
+  display: block;
+}
+
+/*
+***************
+FOOTER CSS HERE
+***************
+*/
+footer {
+  height: 10vh;
+  width: 100%;
+  text-align: center;
+  margin-top: auto;
+}
+
+/*
+***************
+RESPONSIVE CSS HERE
+***************
+*/
