@@ -1,3 +1,6 @@
+// * audio file for notification
+let notiAudio = new Audio("./sound/msg-noti.wav");
+
 // * text to speech API here
 const SpeechRecognition =
   window.SpeechRecognition || window.webkitSpeechRecognition;
@@ -9,16 +12,25 @@ document.getElementById("mic").addEventListener("click", () => {
   recognition.onresult = (e) => {
     let resultIndex = e.resultIndex;
     let transcript = e.results[resultIndex][0].transcript;
+
+    alert(transcript);
     console.log(transcript);
     if (transcript != "") {
-      let messageH4 = document.createElement("h4");
-      messageH4.innerHTML = transcript;
-      messageH4.classList.add("h4-animation");
-      document.querySelector(".user-msg-dp").appendChild(messageH4);
-      let mesAnimation = document.querySelector(".user-msg-dp h4");
+      // -- creating a parent div
+      let micParent = document.createElement("div");
+      micParent.classList.add("user");
+      // -- appending to the root
+      document.querySelector(".chats-display-container").appendChild(micParent);
+      // -- creatung a child node
+      let micChild = document.createElement("div");
+      micChild.classList.add("user-message");
+      micChild.classList.add("mcAnimation");
+      micChild.innerHTML = transcript;
+      // -- apending child to parent
+      micParent.appendChild(micChild);
       // -- animating the message disaply
-      gsap.from(".h4-animation", { duration: 1, opacity: 0, x: "30%" });
-      messageH4.classList.remove("h4-animation");
+      gsap.from(".mcAnimation", { duration: 1, opacity: 0, x: "30%" });
+      messageH4.classList.remove("mcAnimation");
     }
   };
 });
@@ -53,10 +65,34 @@ setTimeout(() => {
   gsap.from("nav", { duration: 2, y: "-100%", ease: "bounce" });
   gsap.from("footer", { duration: 2, x: "-100%", ease: "bounce" });
 }, 6100);
+// * FISR MESSAGE FROM SERVER AFTER DOC IS LOADED
+
+setTimeout(() => {
+  // -- only calling this once
+  // -- server parent div
+  let serverParentDiv = document.createElement("div");
+  serverParentDiv.classList.add("server");
+  // -- appending paret to root
+  document
+    .querySelector(".chats-display-container")
+    .appendChild(serverParentDiv);
+  // -- creaitng server child elem
+  let serverMsgDiv = document.createElement("div");
+  serverMsgDiv.classList.add("server-message");
+  // -- appending child to parent
+  serverParentDiv.appendChild(serverMsgDiv);
+  // * server side message dsiplay here
+  serverMsgDiv.innerHTML = "hello,how may i help you?";
+  serverMsgDiv.classList.add("sdivAnimation");
+  gsap.from(".sdivAnimation", { duration: 1, opacity: 0, x: "-30%" });
+  notiAudio.play();
+  serverMsgDiv.classList.remove("sdivAnimation");
+}, 7700);
 
 // * taking user display and displaying on the screen
 
 document.querySelector("form").addEventListener("submit", (e) => {
+  notiAudio.pause();
   e.preventDefault();
   let message = document.getElementById("user-message").value;
   // -- cleaer the input once value is captured
@@ -82,7 +118,10 @@ document.querySelector("form").addEventListener("submit", (e) => {
     userMsgDiv.classList.remove("msgAnimation");
   }
   // * creating server document
+
+  // * after first message here
   // -- server parent div
+  notiAudio.currentTime = 0;
   let serverParentDiv = document.createElement("div");
   serverParentDiv.classList.add("server");
   // -- appending paret to root
@@ -99,6 +138,7 @@ document.querySelector("form").addEventListener("submit", (e) => {
     serverMsgDiv.innerHTML = "i am good how are you?";
     serverMsgDiv.classList.add("sdivAnimation");
     gsap.from(".sdivAnimation", { duration: 1, opacity: 0, x: "-30%" });
+    notiAudio.play();
     serverMsgDiv.classList.remove("sdivAnimation");
   }
 });
