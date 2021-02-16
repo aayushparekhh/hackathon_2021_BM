@@ -163,7 +163,6 @@ input:focus {
   border: 0px solid transparent;
 }
 .user_input {
-  border: 2px solid red;
   width: 70%;
   display: flex;
   justify-content: space-evenly;
@@ -177,7 +176,7 @@ input:focus {
 }
 .user_input form {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
 }
 .user_input button {
   cursor: pointer;
@@ -188,6 +187,10 @@ input:focus {
 .user_input button:hover {
   transform: scale(1.2);
 }
+#mic {
+  font-size: 2rem;
+  color: white;
+}
 button:focus {
   outline: none;
 }
@@ -195,46 +198,39 @@ button:focus {
   overflow: auto;
   width: 100%;
   margin: 2em auto;
-  border: 2px solid red;
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
   overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  height: 90%;
 }
-.sever-msg-dp {
-  border: 2px solid green;
-  height: 40vh;
-  width: 45%;
+.chats-display-container div {
+  border-radius: 30px;
+  font-size: 1.3rem;
 }
-.user-msg-dp {
-  border: 2px solid yellow;
-  height: 40vh;
-  width: 45%;
+.user {
+  margin: 0.1em;
+  padding: 0 2em;
+  display: flex;
+  justify-content: flex-end;
 }
-.server-message {
-  width: 20%;
-  background-image: url("./images/bkg.jpg");
+.server {
+  padding: 0 2em;
+  display: flex;
+  justify-content: flex-start;
 }
 .user-message {
-  margin: 0 auto;
-  width: 100%;
-  max-width: 100%;
-  overflow-x: hidden;
-  border: 2px solid red;
+  text-align: right;
+  padding: 0 1em;
+  background-color: blue;
 }
-
+.server-message {
+  text-align: left;
+  padding: 0 1em;
+  background-color: pink;
+}
 #user-icon {
   color: #4842cf;
   font-size: 2rem;
-}
-.user-msg-dp h4 {
-  padding: 0.5em;
-  margin: 1em;
-  border-radius: 10px;
-  text-transform: capitalize;
-  color: white;
-  background-color: #4842cf;
-  display: block;
 }
 
 /*

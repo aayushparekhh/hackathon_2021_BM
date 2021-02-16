@@ -1,3 +1,27 @@
+// * text to speech API here
+const SpeechRecognition =
+  window.SpeechRecognition || window.webkitSpeechRecognition;
+const recognition = new SpeechRecognition();
+
+// -- adding event listener to mic
+document.getElementById("mic").addEventListener("click", () => {
+  recognition.start();
+  recognition.onresult = (e) => {
+    let resultIndex = e.resultIndex;
+    let transcript = e.results[resultIndex][0].transcript;
+    console.log(transcript);
+    if (transcript != "") {
+      let messageH4 = document.createElement("h4");
+      messageH4.innerHTML = transcript;
+      messageH4.classList.add("h4-animation");
+      document.querySelector(".user-msg-dp").appendChild(messageH4);
+      let mesAnimation = document.querySelector(".user-msg-dp h4");
+      // -- animating the message disaply
+      gsap.from(".h4-animation", { duration: 1, opacity: 0, x: "30%" });
+      messageH4.classList.remove("h4-animation");
+    }
+  };
+});
 // * preloader javacript here
 let finished = false;
 let loader = document.querySelector(".loader");
@@ -35,24 +59,46 @@ setTimeout(() => {
 document.querySelector("form").addEventListener("submit", (e) => {
   e.preventDefault();
   let message = document.getElementById("user-message").value;
-  // -- cleaer the inout once value is captured
+  // -- cleaer the input once value is captured
   document.getElementById("user-message").value = "";
-  // -- display the user messafe in user msg div
-
-  let messageH4 = document.createElement("h4");
-  messageH4.innerHTML = message;
-  messageH4.classList.add("h4-animation");
-  document.querySelector(".user-msg-dp").appendChild(messageH4);
-  let mesAnimation = document.querySelector(".user-msg-dp h4");
-  // -- animating the message disaply
-  gsap.from(".h4-animation", { duration: 1, opacity: 0, x: "30%" });
-  messageH4.classList.remove("h4-animation");
+  // -- display the user message in user msg div
+  if (message != "") {
+    // -- creating the parent div
+    const userparentDiv = document.createElement("div");
+    userparentDiv.classList.add("user");
+    // -- creating achild node
+    const userMsgDiv = document.createElement("div");
+    userMsgDiv.classList.add("user-message");
+    userMsgDiv.classList.add("msgAnimation");
+    userMsgDiv.innerHTML = message;
+    // -- appending child to the parent
+    userparentDiv.appendChild(userMsgDiv);
+    // -- appending parent to root
+    document
+      .querySelector(".chats-display-container")
+      .appendChild(userparentDiv);
+    // -- animaating the child div
+    gsap.from(".msgAnimation", { duration: 1, opacity: 0, x: "30%" });
+    userMsgDiv.classList.remove("msgAnimation");
+  }
   // * creating server document
-  let servmessageH4 = document.createElement("h4");
-  document.querySelector(".server-message").appendChild(servmessageH4);
+  // -- server parent div
+  let serverParentDiv = document.createElement("div");
+  serverParentDiv.classList.add("server");
+  // -- appending paret to root
+  document
+    .querySelector(".chats-display-container")
+    .appendChild(serverParentDiv);
+  // -- creaitng server child elem
+  let serverMsgDiv = document.createElement("div");
+  serverMsgDiv.classList.add("server-message");
+  // -- appending child to parent
+  serverParentDiv.appendChild(serverMsgDiv);
   // * server side message dsiplay here
-  if (message.includes("how are you" || "how are you?" || "You?")) {
-    servmessageH4.innerHTML = "i am good how are you?";
-    Document.querySelector(".server-message").appendChild(servmessageH4);
+  if (message.includes("you" || "how are you?" || "You?")) {
+    serverMsgDiv.innerHTML = "i am good how are you?";
+    serverMsgDiv.classList.add("sdivAnimation");
+    gsap.from(".sdivAnimation", { duration: 1, opacity: 0, x: "-30%" });
+    serverMsgDiv.classList.remove("sdivAnimation");
   }
 });
