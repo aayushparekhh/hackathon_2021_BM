@@ -4,6 +4,11 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!--favicon here-->
+    <link rel="shortcut icon" type="image/jpg" href="./images/icon.ico" />
+    <!--aos js library-->
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
     <!-- font awesome cdn here-->
     <link
       rel="stylesheet"
@@ -16,6 +21,7 @@
       defer
     ></script>
     <script src="./index.js" defer></script>
+    <script src="./sectionTwo.js" defer></script>
     <!--EXTERNAL CSS HERE-->
     <link rel="stylesheet" href="./index.css" />
     <!--GOOGLE FONTS CDN HERE-->
@@ -28,6 +34,10 @@
     <title>Bit's Magnet</title>
   </head>
   <body>
+    <!--message for mobile users-->
+    <div class="res-msg">
+      <h1>sorry for the interruption,please view only on desktop devices</h1>
+    </div>
     <!--PRELOADER HERE-->
     <div class="loader">
       <div class="color-animator">
@@ -35,26 +45,76 @@
         <div><h1 class="loader-text-two">Hackathon 2021</h1></div>
       </div>
     </div>
-    <!--RESPONSIVE NAVBAR HERE-->
-    <nav>
-      <div class="title">
-        <a href="#">
-          <h1 data-tilt>Bit's Magnet</h1>
-        </a>
+    <!--commands modal here-->
+    <div class="commands-modal">
+      <div class="commands-con">
+        <div class="close-btn">
+          <i class="fa fa-times" aria-hidden="true" id="close-btn"></i>
+        </div>
+        <h1>RMC functions</h1>
+        <h1>What is RMC</h1>
+        <h1>About RMC</h1>
+        <h1>RMC Members</h1>
+        <h1>Qualification for elections</h1>
+        <h1>RMC Elections</h1>
+        <h1>Who conducts Elections</h1>
+        <h1>.RMC Composition</h1>
+        <h1>Complain/Complain Registration</h1>
+        <h1>Vehicle Tax</h1>
+        <h1>Property/Property tax</h1>
+        <h1>Water/Water Charge/Water Tax</h1>
+        <h1>Community Hall Booking / Hall Booking / Hall</h1>
+        <h1>Sports Registration</h1>
+        <h1>E-Memo/ E-Memo Payment</h1>
+        <h1>Complain Status</h1>
+        <h1>Right To Information Act</h1>
+        <h1>Shop and Establishment</h1>
+        <h1>Birth Certificate</h1>
+        <h1>Rajkot city bus pass</h1>
       </div>
-      <div class="nav-elmns">
-        <ul class="nav-links">
-          <li data-tilt>
-            <a href="#">Algorithm</a>
-          </li>
-          <li data-tilt>
-            <a href="#">About Us</a>
-          </li>
-        </ul>
-      </div>
-    </nav>
+    </div>
+
     <!--HEADER HTML HERE-->
+    <!--making a custom modal for user-info-->
+
+    <div class="modal-bg">
+      <div class="modal">
+        <label for="name">First Name:</label>
+
+        <input
+          type="text"
+          name="name"
+          id="user-name"
+          autocomplete="off"
+          required
+        />
+
+        <label for="email">Email</label>
+
+        <input type="email" placeholder="we won't spam you!" name="email" />
+
+        <button data-tilt class="modal-submit">submit</button>
+      </div>
+    </div>
+
     <header>
+      <nav>
+        <div class="title">
+          <a href="index.html">
+            <h1 data-tilt>Bit's Magnet</h1>
+          </a>
+        </div>
+        <div class="nav-elmns">
+          <ul class="nav-links">
+            <li data-tilt>
+              <a href="#algo">Algorithm</a>
+            </li>
+            <li data-tilt>
+              <a href="#aus">About Us</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
       <div class="chatbot-container">
         <div class="chats-display-container"></div>
         <div class="user_input" required="true" autocomplete="off">
@@ -82,9 +142,103 @@
         </div>
       </div>
     </header>
+    <!--section 2 // algo section  -->
+    <section id="algo" class="algorithm">
+      <h1 id="algoHeading" data-tilt>Our Algorithm</h1>
+      <div class="algo-con">
+        <p data-tilt>
+          We've made the AI chatbot with HTML,CSS and vanilla Javascript(no
+          frameworks)
+        </p>
+        <p data-tilt>
+          It's completely a client side app ,the reponses are generated
+          according to the input from the user
+        </p>
+        <p data-tilt>
+          we've included a list of queires in our AI chatbot like
+          elections,jobs,complaints,tax etc etc., for accurate responses
+        </p>
+        <p data-tilt>
+          very easy to integrate into exsisting site/app,has no negligible to 0
+          lag in responses
+        </p>
+      </div>
+    </section>
+    <!--section 3 // about us section -->
+    <section class="about-us" id="aus">
+      <h1 id="abtusHeading" data-tilt>about us</h1>
+      <div class="abt-con">
+        <div class="top-con">
+          <div class="person" data-tilt>
+            <h3>Riddhi Mehta</h3>
+            <br />
+            <p>
+              I am an undergrad by profession. I am persuing Computer
+              Engineering. Currently, I am in semester 4 with CPI of 9.29. I am
+              an active learner who likes coding.
+            </p>
+            <br />
+            <p>Marwadi University</p>
+          </div>
+          <div class="person" data-tilt>
+            <h3>Aayush Parekh</h3>
+            <br />
+            <p>
+              I am a Computer science student and an enthusiast,As a Full Stack
+              developer programming has taught me more then to not forget my
+              semi-colon,I see complex problem solving as a challenge and I
+              always try to find an efficient and fruitful solution.
+            </p>
+            <br />
+            <p>Marwadi University</p>
+          </div>
+          <div class="person" data-tilt>
+            <h3>Zaki Ahmed</h3>
+            <br />
+            <p>UI/UX designer</p>
+            <br />
+            <p>Marwadi University</p>
+          </div>
+        </div>
+        <div class="bottom-con">
+          <div class="person" data-tilt>
+            <h3>Shivani Bhatti</h3>
+            <br />
+            <p>
+              I am shy, you need to tell hi! Mostly build up of art and earth
+              element but making my self go through the suffering of life. Also
+              here to know the world more:)
+            </p>
+            <br />
+            <p>Marwadi University</p>
+          </div>
+          <div class="person" data-tilt>
+            <h3>Kirtan Hadwani</h3>
+            <br />
+            <p>
+              I'm eager to develop my career in computer field by having good
+              command over fullstack development.
+            </p>
+            <br />
+            <p>Marwadi University</p>
+          </div>
+          <div class="person" data-tilt>
+            <h3>Harshit Sharma</h3>
+            <br />
+            <p>pursuing comp engineering</p>
+            <br />
+            <p>Marwadi University</p>
+          </div>
+        </div>
+      </div>
+    </section>
     <!--FOOTER HTML HERE-->
     <footer><h1>Made with &#9825; by Bit's magnet</h1></footer>
   </body>
   <!--SCRIPTS HERE-->
+  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+  <script>
+    AOS.init();
+  </script>
   <script src="./vanilla-tilt.js"></script>
 </html>

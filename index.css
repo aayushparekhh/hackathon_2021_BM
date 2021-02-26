@@ -10,7 +10,8 @@ UNIVERSAL CSS HERE
   box-sizing: border-box;
 }
 html {
-  height: 100%;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
 }
 .loader {
   position: fixed;
@@ -56,17 +57,16 @@ html {
   }
 }
 body {
-  font-family: "Poppins", sans-serif;
+  font-family: "Poppins", "sans-serif";
   display: flex;
   flex-direction: column;
   background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
     url("./images/bkg.jpg");
   /* Full height */
-  height: 100%;
   /* Center and scale the image nicely */
   background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
+  background-size: contain;
+  scroll-behavior: smooth;
 }
 
 /*
@@ -74,7 +74,25 @@ body {
 NAVBAR CSS HERE
 ***************
 */
+.toggle-button {
+  position: absolute;
+  top: 0.75rem;
+  right: 1rem;
+  display: none;
+  justify-content: space-between;
+  flex-direction: column;
+  width: 30px;
+  height: 21px;
+}
+.bar {
+  height: 3px;
+  width: 100%;
+  background-color: white;
+  border-radius: 10px;
+}
 nav {
+  overflow: hidden;
+  top: 0;
   margin: 0 auto;
   width: 95%;
   height: 10vh;
@@ -132,13 +150,23 @@ nav {
 HEADER CSS HERE
 ***************
 */
+header {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)),
+    url("./images/bkg.jpg");
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100%;
+  height: 100vh;
+}
 .chatbot-container {
   display: flex;
   flex-direction: column;
   opacity: 0;
   border-radius: 20px;
   margin: 2em auto;
-  width: 40%;
+  width: 60%;
   height: 60vh;
   background-color: rgba(255, 255, 255, 0.15);
   backdrop-filter: blur(5px);
@@ -204,6 +232,7 @@ button:focus {
   height: 90%;
 }
 .chats-display-container div {
+  margin: 0.2em 0;
   border-radius: 30px;
   font-size: 1.3rem;
 }
@@ -219,36 +248,315 @@ button:focus {
   justify-content: flex-start;
 }
 .user-message {
+  font-weight: lighter;
   text-transform: capitalize;
   text-align: right;
-  padding: 0 1em;
-  background-color: rgba(72, 66, 207, 0.5);
+  padding: 0em 1em;
+  background-color: rgba(72, 66, 207, 0.8);
   backdrop-filter: blur(5px);
   color: white;
 }
 .server-message {
+  font-weight: lighter;
   text-transform: capitalize;
   text-align: left;
-  padding: 0 1em;
+  padding: 0.2em 1em;
   background-color: rgba(220, 59, 144, 0.5);
   backdrop-filter: blur(5px);
   color: white;
+  max-width: 70%;
 }
 #user-icon {
   color: #4842cf;
   font-size: 2rem;
 }
+/*
+user info modal css here
+*/
 
+.modal-bg {
+  z-index: 10;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s, opacity 0.5s;
+}
+#close-btn {
+  font-size: 2rem;
+  color: black;
+  cursor: pointer;
+}
+#close-btn:hover {
+  transform: translateX(45deg);
+}
+.bg-active {
+  visibility: visible;
+  opacity: 1;
+}
+.modal label {
+  font-size: 1.3rem;
+  color: white;
+}
+.modal button {
+  width: 30%;
+  height: 15%;
+  border-radius: 20px;
+  border: 0px solid transparent;
+  cursor: pointer;
+  font-size: 1.3rem;
+  text-transform: uppercase;
+  background-position: center;
+  background-size: cover;
+  color: black;
+  transition: 0.2s ease-in-out-;
+}
+.modal button:hover {
+  background-color: black;
+  color: white;
+}
+.modal {
+  border-radius: 20px;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
+    url("./images/sec-2-bkg.jpg");
+
+  background-position: center;
+  background-size: cover;
+  width: 30%;
+  height: 30%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-direction: column;
+}
+.modal input {
+  background-color: transparent;
+  border: 0px solid transparent;
+  width: 60%;
+  border-bottom: 3px solid whitesmoke;
+  font-size: 1.3rem;
+  color: white;
+  text-transform: capitalize;
+}
+.commands-modal {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  visibility: hidden;
+  opacity: 0;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+  transition: visibility 0s, opacity 0.5s;
+}
+.close-btn {
+  position: sticky;
+  display: flex;
+  justify-content: flex-end;
+}
+#close-btn {
+  position: sticky;
+  text-align: right;
+  font-size: 2.5rem;
+  color: black;
+  transition: 0.3s ease-in-out;
+}
+#close-btn:hover {
+  transform: translateX(45deg);
+  color: white;
+}
+
+.commands-modal-active {
+  visibility: visible;
+  display: flex;
+  opacity: 1;
+}
+.commands-con h1 {
+  color: white;
+  transition: 0.2s ease-in-out;
+}
+.commands-con h1:hover {
+  background-color: rgba(0, 0, 0, 1);
+}
+.commands-con {
+  overflow: auto;
+  cursor: pointer;
+  padding: 2em;
+  border-radius: 30px;
+  height: 50%;
+  width: 50%;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
+    url("./images/sec-3-bkg.jpg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+/*
+************
+SECTION-2 CSS HERE
+*****************
+*/
+.algorithm {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)),
+    url("./images/sec-2-bkg.jpg");
+  height: 100vh;
+  width: 100%;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+#algoHeading {
+  margin-top: 0.5em;
+  font-size: 2rem;
+  -webkit-text-fill-color: transparent; /* Will override color (regardless of order) */
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: white;
+  text-align: center;
+  font-weight: light;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+}
+.algo-con {
+  text-align: left;
+  text-transform: capitalize;
+  overflow: auto;
+  height: 80%;
+  width: 60%;
+  margin: 1em auto;
+  border-radius: 30px;
+  background-color: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(5px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.algo-con p {
+  text-align: left;
+  font-weight: lighter;
+  color: white;
+  margin: 2em;
+  font-size: 1.3rem;
+}
+
+/*
+************
+SECTION-3 CSS HERE
+*****************
+*/
+.top-con {
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  display: flex;
+  height: 45%;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.bottom-con {
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  height: 45%;
+}
+.abt-con {
+  height: 90%;
+  overflow-y: hidden;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.person {
+  overflow: hidden;
+  text-transform: capitalize;
+  text-align: left;
+  padding: 1em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  border-radius: 30px;
+  background-color: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(5px);
+  height: 100%;
+  width: 25%;
+  transition: 0.3s ease-in-out;
+}
+.about-us {
+  height: 150vh;
+  width: 100%;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)),
+    url("./images/sec-3-bkg.jpg");
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.person p {
+  line-height: 2;
+  font-size: 1.3rem;
+}
+#abtusHeading {
+  margin-top: 0.5em;
+  font-size: 2rem;
+  -webkit-text-fill-color: transparent; /* Will override color (regardless of order) */
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: white;
+  text-align: center;
+  font-weight: light;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+}
+.person:hover {
+  cursor: pointer;
+  color: white;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
+    url("./images/bkg.jpg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.person h3 {
+  font-weight: lighter;
+  color: white;
+  font-size: 1.5rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+.person p {
+  color: white;
+  font-size: 1rem;
+}
 /*
 ***************
 FOOTER CSS HERE
 ***************
 */
 footer {
+  -webkit-text-fill-color: transparent; /* Will override color (regardless of order) */
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: white;
   height: 10vh;
   width: 100%;
   text-align: center;
   margin-top: auto;
+  background-color: rgba(0, 0, 0, 0.8);
 }
 
 /*
@@ -256,3 +564,51 @@ footer {
 RESPONSIVE CSS HERE
 ***************
 */
+.res-msg {
+  display: none;
+  opacity: 0;
+}
+@media only screen and (max-width: 900px) {
+  .loader {
+    display: none;
+    opacity: 0;
+  }
+
+  body {
+    background-color: black;
+    height: 100%;
+    width: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+  body::after {
+    content: "plesae view only on desktop";
+  }
+  .res-msg h1 {
+    background-color: black;
+    text-align: center;
+    font-size: 3rem;
+    color: white;
+  }
+  nav {
+    display: none;
+  }
+  header {
+    display: none;
+    opacity: 0;
+  }
+  .modal-bg {
+    opacity: 0;
+    display: none;
+  }
+  .modal {
+    opacity: 0;
+    display: none;
+  }
+  section {
+    display: none;
+  }
+  footer {
+    display: none;
+  }
+}
